@@ -1,5 +1,5 @@
 # AdaptiveDeltaXAI
-Started from a paper under review with no public code, I conducted a dive deep on Delta-XAI, reconstructed the SWING mechanism faithfully from the mathematical description, extended it with four production-grade improvements, validated on synthetic datacenter telemetry in Google Colab, and achieved a 419–631× speedup over the vanilla baseline
+Started from a paper under review with no public code, we conducted a dive deep on Delta-XAI, reconstructed the SWING mechanism faithfully from the mathematical description, extended it with four production-grade improvements, validated on synthetic datacenter telemetry in Google Colab, and achieved a 419–631× speedup over the vanilla baseline
 
 # AdaptiveDeltaXAI — Explainable AI for Datacenter Telemetry Streams
 
