@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delta-XAI Evolution: Vanilla → v1 → v2</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+         background: #f8f7f3; color: #2c2c2a; padding: 20px; }
+  h1  { font-size: 17px; font-weight: 500; text-align: center; margin-bottom: 4px; color: #1B3A6B; }
+  .subtitle { font-size: 12px; text-align: center; color: #666; margin-bottom: 16px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 22px 1fr 22px 1fr; gap: 0; align-items: start; }
+
+  /* ── Column headers ── */
+  .col-head { border-radius: 8px; padding: 10px 10px 8px; text-align: center; margin-bottom: 6px; }
+  .ch-title  { font-size: 13px; font-weight: 500; margin-bottom: 3px; }
+  .ch-sub    { font-size: 11px; line-height: 1.4; }
+  .c1 .col-head { background: #FCEBEB; border: 0.5px solid #F09595; }
+  .c1 .ch-title  { color: #791F1F; }  .c1 .ch-sub { color: #A32D2D; }
+  .c2 .col-head { background: #E6F1FB; border: 0.5px solid #85B7EB; }
+  .c2 .ch-title  { color: #0C447C; }  .c2 .ch-sub { color: #185FA5; }
+  .c3 .col-head { background: #E1F5EE; border: 0.5px solid #5DCAA5; }
+  .c3 .ch-title  { color: #085041; }  .c3 .ch-sub { color: #0F6E56; }
+
+  /* ── Connector arrows ── */
+  .connector { display: flex; flex-direction: column; align-items: center;
+               padding-top: 60px; gap: 4px; }
+  .connector-line  { width: 1px; flex: 1; background: #ccc; }
+  .connector-arrow { font-size: 16px; color: #888; }
+  .connector-label { font-size: 9px; color: #999; writing-mode: vertical-rl;
+                     transform: rotate(180deg); white-space: nowrap; }
+
+  /* ── Layer blocks ── */
+  .layer { border-radius: 8px; padding: 9px 10px; margin-bottom: 6px; }
+  .layer-title { font-size: 10px; font-weight: 500; text-transform: uppercase;
+                 letter-spacing: .05em; margin-bottom: 6px; }
+  .l-dp   { background: #E1F5EE; border: 0.5px solid #5DCAA5; }
+  .l-dp   .layer-title { color: #085041; }
+  .l-cp   { background: #EEEDFE; border: 0.5px solid #AFA9EC; }
+  .l-cp   .layer-title { color: #3C3489; }
+  .l-ep   { background: #FAEEDA; border: 0.5px solid #EF9F27; }
+  .l-ep   .layer-title { color: #633806; }
+  .l-ag   { background: #FAECE7; border: 0.5px solid #F0997B; }
+  .l-ag   .layer-title { color: #712B13; }
+
+  /* ── Node cards ── */
+  .node { border-radius: 6px; padding: 7px 9px; margin-bottom: 4px; border: 0.5px solid; }
+  .node-title { font-size: 11px; font-weight: 500; margin-bottom: 1px; }
+  .node-sub   { font-size: 10px; line-height: 1.5; opacity: .85; }
+  .n-dp   { background: #E1F5EE; border-color: #9FE1CB; }
+  .n-dp   .node-title { color: #085041; } .n-dp   .node-sub { color: #0F6E56; }
+  .n-cp   { background: #EEEDFE; border-color: #CECBF6; }
+  .n-cp   .node-title { color: #3C3489; } .n-cp   .node-sub { color: #534AB7; }
+  .n-ep   { background: #FAEEDA; border-color: #FAC775; }
+  .n-ep   .node-title { color: #633806; } .n-ep   .node-sub { color: #854F0B; }
+  .n-ag   { background: #FAECE7; border-color: #F5C4B3; }
+  .n-ag   .node-title { color: #712B13; } .n-ag   .node-sub { color: #993C1D; }
+  .n-bad  { background: #FCEBEB; border-color: #F7C1C1; }
+  .n-bad  .node-title { color: #791F1F; } .n-bad  .node-sub { color: #A32D2D; }
+  .n-fix  { background: #EAF3DE; border-color: #C0DD97; border-width: 1px; }
+  .n-fix  .node-title { color: #27500A; } .n-fix  .node-sub { color: #3B6D11; }
+  .n-gray { background: #F7F6F2; border-color: #D3D1C7; }
+  .n-gray .node-title { color: #2C2C2A; } .n-gray .node-sub { color: #5F5E5A; }
+  .arrow-down { text-align: center; font-size: 13px; color: #aaa; margin: 2px 0; }
+
+  /* ── Result bars ── */
+  .divider { height: 0.5px; background: #D3D1C7; margin: 4px 0; }
+  .result-bar { border-radius: 8px; padding: 9px 10px; border: 0.5px solid; margin-bottom: 4px; }
+  .rb-title { font-size: 12px; font-weight: 500; margin-bottom: 5px; }
+  .rb-val   { font-size: 11px; line-height: 1.7; }
+  .rb-bad   { background: #FCEBEB; border-color: #F7C1C1; }
+  .rb-bad   .rb-title { color: #791F1F; } .rb-bad   .rb-val { color: #A32D2D; }
+  .rb-ok    { background: #E6F1FB; border-color: #85B7EB; }
+  .rb-ok    .rb-title { color: #0C447C; } .rb-ok    .rb-val { color: #185FA5; }
+  .rb-good  { background: #E1F5EE; border-color: #5DCAA5; }
+  .rb-good  .rb-title { color: #085041; } .rb-good  .rb-val { color: #0F6E56; }
+
+  /* ── Badges ── */
+  .badge { display: inline-block; font-size: 9px; font-weight: 500;
+           padding: 1px 6px; border-radius: 8px; margin-right: 3px; margin-bottom: 2px; }
+  .b-red    { background: #FCEBEB; color: #791F1F; }
+  .b-green  { background: #E1F5EE; color: #085041; }
+  .b-amber  { background: #FAEEDA; color: #633806; }
+  .b-purple { background: #EEEDFE; color: #3C3489; }
+  .b-blue   { background: #E6F1FB; color: #0C447C; }
+</style>
+</head>
+<body>
+
+<h1>Delta-XAI Evolution: Vanilla → AdaptiveDeltaXAI v1 → AdaptiveDeltaXAI v2</h1>
+<p class="subtitle">DC Temperature &amp; Power Telemetry Monitoring · github.com/richardtrajkumar/AdaptiveDeltaXAI</p>
+
+<div class="grid">
+
+  <!-- ══════════════════ COLUMN 1: VANILLA ══════════════════ -->
+  <div class="c1">
+    <div class="col-head">
+      <div class="ch-title">Delta-XAI (vanilla)</div>
+      <div class="ch-sub">arXiv:2511.23036 · paper original<br>no caching · generic time series</div>
+    </div>
+
+    <div class="layer l-dp">
+      <div class="layer-title">Data Plane</div>
+      <div class="node n-dp">
+        <div class="node-title">DC sensors</div>
+        <div class="node-sub">temp + power raw readings</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-dp">
+        <div class="node-title">Sliding window W_t</div>
+        <div class="node-sub">20 steps × 8 sensors · no detrending</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-bad">
+        <div class="node-title">GRU model</div>
+        <div class="node-sub">random weights · anomaly score ŷ_t</div>
+      </div>
+    </div>
+
+    <div class="layer l-cp">
+      <div class="layer-title">Control Plane</div>
+      <div class="node n-bad">
+        <div class="node-title">SWING — every single step</div>
+        <div class="node-sub">671ms temp · 686ms power · 100% recompute · no trigger logic · no cache</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-bad">
+        <div class="node-title">No cache · no grouping</div>
+        <div class="node-sub">W_prev stored only · explanation discarded · flat sensor list · no drift detection</div>
+      </div>
+    </div>
+
+    <div class="layer l-ep">
+      <div class="layer-title">Evaluation</div>
+      <div class="node n-bad">
+        <div class="node-title">Not evaluated for DC</div>
+        <div class="node-sub">generic benchmark only · no DC fidelity metrics defined</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="result-bar rb-bad">
+      <div class="rb-title">Key numbers</div>
+      <div class="rb-val">
+        Recompute rate: 100% always<br>
+        Latency: 671ms / 686ms per step<br>
+        At 100 sensors: ~84s per step<br>
+        DC 10s budget: <strong>impossible</strong><br>
+        AOPC: not measured<br>
+        Spearman ρ: not measured<br>
+        Checks passed: n/a
+      </div>
+    </div>
+
+    <div class="result-bar rb-bad" style="margin-top:4px">
+      <div class="rb-title">Why it fails for DC monitoring</div>
+      <div class="rb-val">
+        <span class="badge b-red">Speed</span>84s at 100 sensors — impossible<br>
+        <span class="badge b-red">Cycles</span>CRAC/batch fires false alerts<br>
+        <span class="badge b-red">Structure</span>sensors treated as flat list<br>
+        <span class="badge b-red">Drift</span>stale explanations undetected<br>
+        <span class="badge b-red">Hierarchy</span>no PDU / rack zone awareness
+      </div>
+    </div>
+  </div>
+
+  <!-- connector 1→2 -->
+  <div class="connector">
+    <div class="connector-line"></div>
+    <div class="connector-arrow">→</div>
+    <div class="connector-label">v1 adds caching</div>
+    <div class="connector-arrow">→</div>
+    <div class="connector-line"></div>
+  </div>
+
+  <!-- ══════════════════ COLUMN 2: v1 ══════════════════ -->
+  <div class="c2">
+    <div class="col-head">
+      <div class="ch-title">AdaptiveDeltaXAI — v1</div>
+      <div class="ch-sub">Control Plane / Data Plane split<br>16/16 checks · 428× · 552× speedup</div>
+    </div>
+
+    <div class="layer l-dp">
+      <div class="layer-title">Data Plane</div>
+      <div class="node n-dp">
+        <div class="node-title">DC sensors</div>
+        <div class="node-sub">temp + power raw readings</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-dp">
+        <div class="node-title">EMA detrend  ← new</div>
+        <div class="node-sub">residual = x_t − EMA(x_t) · strips CRAC cycles and batch periodicity</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-dp">
+        <div class="node-title">Sliding window W_t</div>
+        <div class="node-sub">20 steps × 8 sensors · feeds Control Plane</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-bad">
+        <div class="node-title">GRU model — untrained</div>
+        <div class="node-sub">BCELoss · 3 epochs · hedges near 0.5 · random weights cause AOPC=0</div>
+      </div>
+    </div>
+
+    <div class="layer l-cp">
+      <div class="layer-title">Control Plane  ← new</div>
+      <div class="node n-cp">
+        <div class="node-title">Adaptive trigger</div>
+        <div class="node-sub">θ_i = k·σ_i per sensor · drift ψ · T_max=60 safety bound</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">SWING engine</div>
+        <div class="node-sub">fires 18.3% temp · 10% power only · 82–90% cache hits</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">Explanation cache</div>
+        <div class="node-sub">cache age mean 17.7 / 18.9 steps · E_cached + E_ema rolling avg</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">Group attribution</div>
+        <div class="node-sub">zone_A/zone_B temp · PDU_1/PDU_2 power · temporal discount γ</div>
+      </div>
+    </div>
+
+    <div class="layer l-ep">
+      <div class="layer-title">Evaluation Plane</div>
+      <div class="node n-bad">
+        <div class="node-title">AOPC ≈ 0 both streams</div>
+        <div class="node-sub">untrained GRU ignores input · masking features has no effect on score</div>
+      </div>
+      <div class="node n-bad" style="margin-top:4px">
+        <div class="node-title">Spearman ρ — 15/120 valid (temp)</div>
+        <div class="node-sub">GRU uncertain → all-zero E matrices rejected by spearmanr · power: 118 valid, ρ=0.170</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="result-bar rb-ok">
+      <div class="rb-title">Key numbers</div>
+      <div class="rb-val">
+        Recompute: 18.3% temp / 10.0% power<br>
+        Latency: 1.66ms temp / 1.24ms power<br>
+        Speedup: 428× temp · 552× power<br>
+        P99 latency: 5.18ms / 4.01ms<br>
+        AOPC: ≈ 0.00 (untrained model)<br>
+        Spearman ρ: 15 valid steps (temp)<br>
+        Checks passed: 16/16
+      </div>
+    </div>
+
+    <div class="result-bar rb-ok" style="margin-top:4px">
+      <div class="rb-title">What v1 proved and what it did not</div>
+      <div class="rb-val">
+        <span class="badge b-green">Proved</span>caching works · speedup real<br>
+        <span class="badge b-green">Proved</span>18% / 10% recompute rate<br>
+        <span class="badge b-green">Proved</span>DC deployment feasible<br>
+        <span class="badge b-red">Not proved</span>AOPC · fidelity = noise<br>
+        <span class="badge b-red">Fix needed</span>class-weighted loss in GRU
+      </div>
+    </div>
+  </div>
+
+  <!-- connector 2→3 -->
+  <div class="connector">
+    <div class="connector-line"></div>
+    <div class="connector-arrow">→</div>
+    <div class="connector-label">v2 fixes fidelity</div>
+    <div class="connector-arrow">→</div>
+    <div class="connector-line"></div>
+  </div>
+
+  <!-- ══════════════════ COLUMN 3: v2 ══════════════════ -->
+  <div class="c3">
+    <div class="col-head">
+      <div class="ch-title">AdaptiveDeltaXAI — v2</div>
+      <div class="ch-sub">Two targeted fixes applied<br>16/16 checks · 397× · 540× speedup</div>
+    </div>
+
+    <div class="layer l-dp">
+      <div class="layer-title">Data Plane</div>
+      <div class="node n-dp">
+        <div class="node-title">DC sensors</div>
+        <div class="node-sub">temp + power raw readings</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-dp">
+        <div class="node-title">EMA detrend</div>
+        <div class="node-sub">residual = x_t − EMA(x_t) · strips CRAC cycles</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-dp">
+        <div class="node-title">Sliding window W_t</div>
+        <div class="node-sub">20 steps × 8 sensors · feeds Control Plane</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-fix">
+        <div class="node-title">GRU — Fix 1 applied</div>
+        <div class="node-sub">BCEWithLogitsLoss · pos_weight=19× · hidden 64 · 2 layers · 5 epochs · fires confidently on anomalies</div>
+      </div>
+    </div>
+
+    <div class="layer l-cp">
+      <div class="layer-title">Control Plane — unchanged from v1</div>
+      <div class="node n-cp">
+        <div class="node-title">Adaptive trigger</div>
+        <div class="node-sub">θ_i = k·σ_i · drift ψ · T_max safety · same as v1</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">SWING engine</div>
+        <div class="node-sub">18.3% temp · 10% power · same trigger rate as v1</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">Explanation cache</div>
+        <div class="node-sub">cache age mean 17.7 / 18.9 steps · unchanged</div>
+      </div>
+      <div class="arrow-down">↓</div>
+      <div class="node n-cp">
+        <div class="node-title">Group attribution</div>
+        <div class="node-sub">zone_A/zone_B · PDU_1/PDU_2 · γ discount · unchanged</div>
+      </div>
+    </div>
+
+    <div class="layer l-ep">
+      <div class="layer-title">Evaluation Plane — Fix 2 applied</div>
+      <div class="node n-fix">
+        <div class="node-title">AOPC — Fix 2 applied</div>
+        <div class="node-sub">mean-imputation mask · anomaly-step focus · 0.0009 temp / 0.0076 power (was 0.00)</div>
+      </div>
+      <div class="node n-fix" style="margin-top:4px">
+        <div class="node-title">Spearman ρ — 118/120 valid (temp)</div>
+        <div class="node-sub">threshold 1e-9→1e-10 · anomaly-step focus · max-lag variant · ρ=0.030 temp / 0.224 power (+32%)</div>
+      </div>
+    </div>
+
+    <div class="layer l-ag">
+      <div class="layer-title">Agentic Layer — foundation  ← new</div>
+      <div class="node n-ag">
+        <div class="node-title">Alert formatter</div>
+        <div class="node-sub">zone/PDU human-readable SRE alerts · "Zone A thermal anomaly → server_3, PDU_1"</div>
+      </div>
+      <div class="node n-ag" style="margin-top:4px">
+        <div class="node-title">Causal RCA scaffold</div>
+        <div class="node-sub">Granger proxy · RCS=NaN (needs N_EVAL=720 in v3 to resolve)</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="result-bar rb-good">
+      <div class="rb-title">Key numbers</div>
+      <div class="rb-val">
+        Recompute: 18.3% temp / 10.0% power<br>
+        Latency: 1.02ms temp / 0.76ms power<br>
+        Speedup: 397× temp · 540× power<br>
+        P99 latency: 3.75ms / 2.30ms<br>
+        AOPC: +0.0009 temp / +0.0076 power<br>
+        Spearman ρ: 118 valid · 0.030 / 0.224<br>
+        Checks passed: 16/16
+      </div>
+    </div>
+
+    <div class="result-bar rb-good" style="margin-top:4px">
+      <div class="rb-title">What v3 still needs to fix</div>
+      <div class="rb-val">
+        <span class="badge b-amber">Fix 3</span>exp thermal rise/fall tau_steps=3<br>
+        <span class="badge b-amber">Fix 4</span>N_EVAL=720 · N_STEPS=20 full stream<br>
+        <span class="badge b-amber">Fix 4</span>RCS NaN resolves at N_EVAL=720<br>
+        <span class="badge b-purple">Target</span>AOPC 0.05–0.20 · ρ &gt; 0.70<br>
+        <span class="badge b-blue">Vision</span>real DC telemetry validation
+      </div>
+    </div>
+  </div>
+
+</div><!-- end grid -->
+
+</body>
+</html>
