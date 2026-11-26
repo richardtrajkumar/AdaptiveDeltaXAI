@@ -1,0 +1,18 @@
+{
+  "policy": "offline_score_change_oracle",
+  "seed": 62,
+  "causal_online_policy": false,
+  "matched_refresh_count": 1395,
+  "n_steps": 17235,
+  "n_fresh_calls": 1395,
+  "recompute_pct": 8.093994778067884,
+  "amortized_step_latency_ms_mean": 5.463601338323527,
+  "amortized_step_latency_ms_p95": 60.98649909981758,
+  "fresh_call_latency_ms_mean": 67.07389648244019,
+  "fresh_call_latency_ms_p95": 90.63785619991904,
+  "fresh_completeness_residual_mean": 0.00018581835065691274,
+  "fresh_completeness_residual_p95": 0.0008215226233005516,
+  "refresh_reasons": {
+    "score_change_policy": 17235
+  }
+}

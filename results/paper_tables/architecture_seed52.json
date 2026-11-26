@@ -1,0 +1,70 @@
+{
+  "seed": 52,
+  "same_split_seed_controller": true,
+  "gru_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.944356388438879,
+    "auprc": 0.9063606404775968,
+    "precision": 0.952054794520548,
+    "recall": 0.8398791540785498,
+    "f1": 0.8924558587479936,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3091,
+      14,
+      53,
+      278
+    ]
+  },
+  "transformer_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.9581408020393966,
+    "auprc": 0.9200402227293487,
+    "precision": 0.8305084745762712,
+    "recall": 0.8882175226586103,
+    "f1": 0.8583941605839416,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3045,
+      60,
+      37,
+      294
+    ]
+  },
+  "gru_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1398,
+    "recompute_pct": 8.111401218450826,
+    "amortized_step_latency_ms_mean": 5.277532212879313,
+    "amortized_step_latency_ms_p95": 58.10571110023375,
+    "fresh_call_latency_ms_mean": 64.31973929183889,
+    "fresh_call_latency_ms_p95": 88.43745145004502,
+    "fresh_completeness_residual_mean": 0.0002259006444877499,
+    "fresh_completeness_residual_p95": 0.0011415547225624317,
+    "refresh_reasons": {
+      "cached_event_context": 15837,
+      "score_residual_I1_I2": 1213,
+      "input_drift_or_age_I3": 184,
+      "initialization": 1
+    }
+  },
+  "transformer_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1269,
+    "recompute_pct": 7.362924281984334,
+    "amortized_step_latency_ms_mean": 3.161217706522016,
+    "amortized_step_latency_ms_p95": 38.21803819992056,
+    "fresh_call_latency_ms_mean": 42.168119107145145,
+    "fresh_call_latency_ms_p95": 56.30287299973133,
+    "fresh_completeness_residual_mean": 9.678490062364436e-05,
+    "fresh_completeness_residual_p95": 0.0003723624628037214,
+    "refresh_reasons": {
+      "cached_event_context": 15966,
+      "score_residual_I1_I2": 1129,
+      "input_drift_or_age_I3": 139,
+      "initialization": 1
+    }
+  }
+}

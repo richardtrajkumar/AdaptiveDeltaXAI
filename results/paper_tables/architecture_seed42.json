@@ -1,0 +1,70 @@
+{
+  "seed": 42,
+  "same_split_seed_controller": true,
+  "gru_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.9524954877378363,
+    "auprc": 0.9145917947997088,
+    "precision": 0.9755244755244755,
+    "recall": 0.8429003021148036,
+    "f1": 0.9043760129659644,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3098,
+      7,
+      52,
+      279
+    ]
+  },
+  "transformer_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.9580999362688578,
+    "auprc": 0.9234234177121723,
+    "precision": 0.9177215189873418,
+    "recall": 0.8761329305135952,
+    "f1": 0.8964451313755796,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3079,
+      26,
+      41,
+      290
+    ]
+  },
+  "gru_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1391,
+    "recompute_pct": 8.07078619089063,
+    "amortized_step_latency_ms_mean": 5.405481589674448,
+    "amortized_step_latency_ms_p95": 59.575964199848386,
+    "fresh_call_latency_ms_mean": 66.21560612006057,
+    "fresh_call_latency_ms_p95": 90.59293900008925,
+    "fresh_completeness_residual_mean": 0.0001810456726236348,
+    "fresh_completeness_residual_p95": 0.0008426502463407815,
+    "refresh_reasons": {
+      "cached_event_context": 15844,
+      "score_residual_I1_I2": 1216,
+      "input_drift_or_age_I3": 174,
+      "initialization": 1
+    }
+  },
+  "transformer_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1316,
+    "recompute_pct": 7.635625181317088,
+    "amortized_step_latency_ms_mean": 3.4290438962612195,
+    "amortized_step_latency_ms_p95": 39.53323019959498,
+    "fresh_call_latency_ms_mean": 44.12034282598966,
+    "fresh_call_latency_ms_p95": 59.38973074989917,
+    "fresh_completeness_residual_mean": 6.998634817441004e-05,
+    "fresh_completeness_residual_p95": 0.0002931089256890118,
+    "refresh_reasons": {
+      "cached_event_context": 15919,
+      "score_residual_I1_I2": 1152,
+      "input_drift_or_age_I3": 163,
+      "initialization": 1
+    }
+  }
+}

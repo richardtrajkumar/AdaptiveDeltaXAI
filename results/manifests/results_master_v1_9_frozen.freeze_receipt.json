@@ -1,0 +1,23 @@
+{
+  "release": "Master v1.9",
+  "bundle": "/content/drive/MyDrive/Colab Notebooks/ADXAI_Dataset_48hr/results_master_v1_9_frozen.zip",
+  "sha256": "119ffebeca5d49cb863e31679a124ee8a916c3476439685ebcee23d97574c23a",
+  "seeds": [
+    42,
+    52,
+    62
+  ],
+  "status": "frozen",
+  "hardware": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "memory_kb": 13286924,
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu": "Tesla T4",
+    "timing_device_label": "GPU"
+  },
+  "public_label_alignment": "window_end_t_minus_1"
+}

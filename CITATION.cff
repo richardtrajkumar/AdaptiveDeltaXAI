@@ -1,0 +1,26 @@
+cff-version: 1.2.0
+message: "If you use this software or its results, please cite it using these metadata."
+title: "AdaptiveDeltaXAI: adaptive online explanation for continuous datacenter telemetry monitoring (builds on Delta-XAI)"
+version: "1.9.0"
+date-released: "2026-11-26"   # update to the actual release date
+license: MIT
+repository-code: "https://github.com/richardtrajkumar/AdaptiveDeltaXAI"
+abstract: "Adaptive controller around fresh Full-SWING prediction-change attribution for continuous datacenter telemetry monitoring, with a synthetic 48-hour telemetry generator, regression tests, and a frozen T4 result bundle."
+keywords: [explainable AI, time series, datacenter telemetry, Delta-XAI, SWING, anomaly detection]
+authors:
+  - family-names: "Rajkumar"
+    given-names: "Richard T."
+    affiliation: "University of Arkansas at Little Rock"
+  - family-names: "Amure"
+    given-names: "Ridwan"
+    affiliation: "University of Arkansas at Little Rock"
+  - family-names: "Mohammed"
+    given-names: "Muzzakir"
+    affiliation: "University of Arkansas at Little Rock"
+  - family-names: "Milanova"
+    given-names: "Mariofanna"
+    affiliation: "University of Arkansas at Little Rock"
+  - family-names: "Elfikky"
+    given-names: "Abdelrahman"
+    affiliation: "University of Arkansas at Little Rock"
+# After the Zenodo DOI exists, add:  doi: 10.5281/zenodo.XXXXXXX

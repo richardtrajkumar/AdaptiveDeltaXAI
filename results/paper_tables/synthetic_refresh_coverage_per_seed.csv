@@ -1,0 +1,7 @@
+n_steps,n_refreshes,recompute_pct,n_true_anomaly_events,events_with_refresh_count,event_refresh_coverage,mean_steps_to_first_refresh_detected_events,refresh_on_anomaly_step_pct_of_all_refreshes,refresh_on_normal_step_pct_of_all_refreshes,stream,seed,scope,target_alignment
+3456,148,4.282407407407407,13,12,0.9230769230769231,0.9166666666666666,32.432432432432435,67.56756756756756,power,42,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i
+3456,157,4.542824074074074,13,12,0.9230769230769231,0.8333333333333334,31.21019108280255,68.78980891719745,power,52,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i
+3456,148,4.282407407407407,13,12,0.9230769230769231,0.9166666666666666,32.432432432432435,67.56756756756756,power,62,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i
+3456,262,7.581018518518519,13,12,0.9230769230769231,3.4166666666666665,37.786259541984734,62.213740458015266,temperature,42,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i
+3456,267,7.725694444444445,13,12,0.9230769230769231,3.5833333333333335,37.07865168539326,62.92134831460674,temperature,52,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i
+3456,265,7.667824074074074,13,12,0.9230769230769231,3.25,35.094339622641506,64.90566037735849,temperature,62,held_out_test,synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i

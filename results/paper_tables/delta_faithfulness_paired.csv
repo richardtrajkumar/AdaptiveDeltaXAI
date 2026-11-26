@@ -1,0 +1,5 @@
+baseline,n_pairs,mean_difference,ci_low,ci_high,bootstrap_unit,interpretation
+aw_ig_delta,50,-0.021472879224456846,-0.06408936793322209,0.01831987922254483,window,exploratory_window_bootstrap
+kernel_shap_delta,50,-0.04150712836999446,-0.08202930900442879,-0.007777489406289548,window,exploratory_window_bootstrap
+lime_delta,50,-0.026046464783139527,-0.0576079004809726,-0.0008838352432940223,window,exploratory_window_bootstrap
+zero_ig_delta,50,-0.03903845483437181,-0.07683204759075306,-0.006370994720608011,window,exploratory_window_bootstrap

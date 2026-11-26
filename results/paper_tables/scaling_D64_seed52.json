@@ -1,0 +1,20 @@
+{
+  "seed": 52,
+  "sensor_count": 64,
+  "stream_scope": "held_out_test_with_history",
+  "n_steps": 3437,
+  "n_fresh_calls": 277,
+  "recompute_pct": 8.059354087867327,
+  "amortized_step_latency_ms_mean": 5.573818345653676,
+  "amortized_step_latency_ms_p95": 58.6556450003627,
+  "fresh_call_latency_ms_mean": 68.22294827436336,
+  "fresh_call_latency_ms_p95": 96.7095199999676,
+  "fresh_completeness_residual_mean": 0.0005314945592725559,
+  "fresh_completeness_residual_p95": 0.0024075578432530146,
+  "refresh_reasons": {
+    "cached_event_context": 3160,
+    "score_residual_I1_I2": 248,
+    "input_drift_or_age_I3": 28,
+    "initialization": 1
+  }
+}

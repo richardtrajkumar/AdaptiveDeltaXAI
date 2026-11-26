@@ -1,0 +1,14 @@
+{
+  "policy": "adaptive",
+  "causal_online_policy": true,
+  "result_source": "synthetic_temperature_seed42.json",
+  "n_steps": 17235,
+  "n_fresh_calls": 1391,
+  "recompute_pct": 8.07078619089063,
+  "amortized_step_latency_ms_mean": 4.892558138613275,
+  "amortized_step_latency_ms_p95": 54.15041890003067,
+  "fresh_call_latency_ms_mean": 59.931915033068364,
+  "fresh_call_latency_ms_p95": 82.60654250000243,
+  "fresh_completeness_residual_mean": 0.0001810456726236348,
+  "fresh_completeness_residual_p95": 0.0008426502463407815
+}

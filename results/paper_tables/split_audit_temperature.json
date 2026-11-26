@@ -1,0 +1,24 @@
+{
+  "stream": "temperature",
+  "n_total": 17280,
+  "train_end": 12096,
+  "validation_end": 13824,
+  "test_start": 13824,
+  "raw_split_sizes": [
+    12096,
+    1728,
+    3456
+  ],
+  "valid_window_counts": [
+    12076,
+    1708,
+    3436
+  ],
+  "positive_window_counts": [
+    1535,
+    139,
+    331
+  ],
+  "normalization_fit": "training_observations_only",
+  "window_policy": "within_split_only; no cross-boundary inputs"
+}

@@ -1,0 +1,27 @@
+{
+  "seed": 62,
+  "stream": "power",
+  "detector_n_raw_test_steps": 3456,
+  "detector_n_valid_windows": 3436,
+  "detector_n_positive_windows": 331,
+  "detector_auroc": 0.9796595492116312,
+  "detector_auprc": 0.9527465586376251,
+  "detector_precision": 0.9434523809523809,
+  "detector_recall": 0.9577039274924471,
+  "detector_f1": 0.9505247376311844,
+  "detector_confusion_matrix_tn_fp_fn_tp": [
+    3086,
+    19,
+    14,
+    317
+  ],
+  "operational_n_steps": 17235,
+  "operational_n_fresh_calls": 785,
+  "operational_recompute_pct": 4.554685233536408,
+  "operational_amortized_step_latency_ms_mean": 2.813561168262121,
+  "operational_amortized_step_latency_ms_p95": 0.14783509991502763,
+  "operational_fresh_call_latency_ms_mean": 60.754020494271856,
+  "operational_fresh_call_latency_ms_p95": 82.08985360010956,
+  "operational_fresh_completeness_residual_mean": 0.0006935181521816523,
+  "operational_fresh_completeness_residual_p95": 0.0033706814050674413
+}

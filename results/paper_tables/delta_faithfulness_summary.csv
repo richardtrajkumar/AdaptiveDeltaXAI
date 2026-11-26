@@ -1,0 +1,6 @@
+method,n_common_windows,mean_prediction_difference_aopc,ci_low,ci_high,history_source
+aw_ig_delta,50,0.006059288308024407,-0.041353658204432577,0.053264555428642744,real_observed_W_plus_delta_plus_lag
+full_swing_delta,50,-0.01541359091643244,-0.05878603054594714,0.03087069375568529,real_observed_W_plus_delta_plus_lag
+kernel_shap_delta,50,0.02609353745356202,-0.010280036279931664,0.06771523705497381,real_observed_W_plus_delta_plus_lag
+lime_delta,50,0.010632873866707087,-0.015397313003893942,0.04532803178671737,real_observed_W_plus_delta_plus_lag
+zero_ig_delta,50,0.023624863917939366,-0.014866363298613577,0.06973127841216037,real_observed_W_plus_delta_plus_lag

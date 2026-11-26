@@ -1,0 +1,23 @@
+{
+  "status": "PASS",
+  "release": "Master v1.9",
+  "public_reconstruction_label_alignment": "window_end_t_minus_1",
+  "synthetic_classifier_label_alignment": "window_target_t",
+  "full_swing_linear_completeness": 0.0,
+  "hardware": {
+    "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "cpu_model": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+    "memory_kb": 13286924,
+    "torch": "2.14.1+cu130",
+    "cuda_available": true,
+    "cuda_version": "13.0",
+    "gpu": "Tesla T4",
+    "timing_device_label": "GPU"
+  },
+  "data_files": [
+    "tier2_temperature_stream.npy",
+    "tier2_power_stream.npy",
+    "tier2_labels.npy"
+  ]
+}

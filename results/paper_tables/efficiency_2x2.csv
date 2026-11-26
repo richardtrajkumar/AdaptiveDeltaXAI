@@ -1,0 +1,5 @@
+condition,attribution_evaluation,refresh_policy,hardware,recompute_pct_mean,recompute_pct_std,amortized_step_latency_ms_mean_mean,amortized_step_latency_ms_mean_std,fresh_call_latency_ms_mean_mean,fresh_call_latency_ms_mean_std,fresh_completeness_residual_mean_mean,fresh_completeness_residual_mean_std
+batched_adaptive_refresh,batched_multipathig,adaptive,GPU,16.831683168316832,0.0,9.753340904946057,0.23738632876648377,57.4546785764516,1.3781368901494588,0.0004785955536456,0.0
+batched_always_refresh,batched_multipathig,always,GPU,100.0,0.0,62.586434158405574,6.494519738743099,62.347820150511566,6.474619098076046,0.0001610154739603,0.0
+unbatched_adaptive_refresh,serialized_fresh_calls,adaptive,GPU,16.831683168316832,0.0,443.5235806693275,5.493087022398224,2634.497881388244,32.64928872635635,0.0004786027325548,0.0
+unbatched_always_refresh,serialized_fresh_calls,always,GPU,100.0,0.0,2626.084377346513,38.39988153574891,2625.78013219209,38.399999365018076,0.0001610170807358,0.0

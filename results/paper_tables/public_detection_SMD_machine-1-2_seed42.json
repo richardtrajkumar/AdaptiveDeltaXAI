@@ -1,0 +1,15 @@
+{
+  "n_steps": 23674,
+  "n_positive": 542,
+  "n_negative": 23132,
+  "positive_prevalence": 0.022894314437779843,
+  "auroc": 0.8683943202911191,
+  "auprc_average_precision": 0.22051202707926967,
+  "auprc_lift_over_prevalence": 9.631737507517768,
+  "dataset": "SMD",
+  "unit": "machine-1-2",
+  "seed": 42,
+  "score_definition": "log1p_reconstruction_mse",
+  "label_alignment": "window_end_t_minus_1",
+  "threshold_source": "none_threshold_free_only"
+}

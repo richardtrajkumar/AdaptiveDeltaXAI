@@ -1,0 +1,5 @@
+n_steps,n_positive,n_negative,positive_prevalence,auroc,auprc_average_precision,auprc_lift_over_prevalence,dataset,unit,seed,score_definition,label_alignment,threshold_source
+87821,24381,63440,0.2776215256032156,0.7706459128526736,0.570042517633524,2.0533080653416067,PSM,PSM,42,log1p_reconstruction_mse,window_end_t_minus_1,none_threshold_free_only
+28459,2694,25765,0.0946624969254014,0.8765033695711525,0.5339134646852542,5.640179395500242,SMD,machine-1-1,42,log1p_reconstruction_mse,window_end_t_minus_1,none_threshold_free_only
+23674,542,23132,0.0228943144377798,0.8683943202911191,0.2205120270792696,9.631737507517768,SMD,machine-1-2,42,log1p_reconstruction_mse,window_end_t_minus_1,none_threshold_free_only
+23683,817,22866,0.0344973187518473,0.7880954239167451,0.2012668209647292,5.834274321796428,SMD,machine-1-3,42,log1p_reconstruction_mse,window_end_t_minus_1,none_threshold_free_only

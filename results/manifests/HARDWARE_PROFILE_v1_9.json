@@ -1,0 +1,11 @@
+{
+  "python": "3.13.16 (main, Oct  1 2026, 15:40:24) [GCC 13.3.0]",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "cpu_model": "Intel(R) Xeon(R) CPU @ 2.00GHz",
+  "memory_kb": 13286924,
+  "torch": "2.14.1+cu130",
+  "cuda_available": true,
+  "cuda_version": "13.0",
+  "gpu": "Tesla T4",
+  "timing_device_label": "GPU"
+}

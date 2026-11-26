@@ -1,0 +1,24 @@
+diff -ru '--exclude=__pycache__' a/scripts/core_v1_9.py b/scripts/core_v1_9.py
+--- a/scripts/core_v1_9.py
++++ b/scripts/core_v1_9.py
+@@ -219,14 +219,16 @@
+ 
+ 
+ def load_controller_records(path):
+-    data=np.load(path, allow_pickle=False)
++    # Read each compressed array once, rather than repeatedly per record.
++    with np.load(path, allow_pickle=False) as archive:
++        data = {key: archive[key] for key in archive.files}
+     records=[]
+     for i in range(len(data['t'])):
+         fresh=None if np.isnan(data['fresh_latency_ms'][i]) else float(data['fresh_latency_ms'][i])
+         residual=None if np.isnan(data['fresh_completeness_residual'][i]) else float(data['fresh_completeness_residual'][i])
+-        target_index = int(data['target_index'][i]) if 'target_index' in data.files else int(data['t'][i] + 1)
+-        target_valid = bool(data['target_valid'][i]) if 'target_valid' in data.files else True
+-        age_after = int(data['cache_age'][i]); age_before = int(data['cache_age_before'][i]) if 'cache_age_before' in data.files else age_after
++        target_index = int(data['target_index'][i]) if 'target_index' in data else int(data['t'][i] + 1)
++        target_valid = bool(data['target_valid'][i]) if 'target_valid' in data else True
++        age_after = int(data['cache_age'][i]); age_before = int(data['cache_age_before'][i]) if 'cache_age_before' in data else age_after
+         records.append(Record(int(data['t'][i]),target_index,target_valid,float(data['previous_score'][i]),float(data['current_score'][i]),
+                               bool(data['refreshed'][i]),str(data['reason'][i]),age_before,age_after,
+                               float(data['step_latency_ms'][i]),fresh,residual,data['cached_event_context'][i]))

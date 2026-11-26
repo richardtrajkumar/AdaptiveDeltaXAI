@@ -1,0 +1,19 @@
+{
+  "seed": 42,
+  "configuration": "No_I1",
+  "n_steps": 3437,
+  "n_fresh_calls": 3437,
+  "recompute_pct": 100.0,
+  "amortized_step_latency_ms_mean": 66.1754070363635,
+  "amortized_step_latency_ms_p95": 91.16197839994129,
+  "fresh_call_latency_ms_mean": 65.92522107564852,
+  "fresh_call_latency_ms_p95": 90.66650080003451,
+  "fresh_completeness_residual_mean": 4.955155132237246e-05,
+  "fresh_completeness_residual_p95": 0.00018473640084266607,
+  "refresh_reasons": {
+    "always_refresh_no_I1": 3436,
+    "initialization": 1
+  },
+  "aopc_fresh_only": -0.010222764546051621,
+  "aopc_n_fresh": 50
+}

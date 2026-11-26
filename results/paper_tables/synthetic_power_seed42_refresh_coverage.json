@@ -1,0 +1,15 @@
+{
+  "n_steps": 3456,
+  "n_refreshes": 148,
+  "recompute_pct": 4.282407407407407,
+  "n_true_anomaly_events": 13,
+  "events_with_refresh_count": 12,
+  "event_refresh_coverage": 0.9230769230769231,
+  "mean_steps_to_first_refresh_detected_events": 0.9166666666666666,
+  "refresh_on_anomaly_step_pct_of_all_refreshes": 32.432432432432435,
+  "refresh_on_normal_step_pct_of_all_refreshes": 67.56756756756756,
+  "stream": "power",
+  "seed": 42,
+  "scope": "held_out_test",
+  "target_alignment": "synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i"
+}

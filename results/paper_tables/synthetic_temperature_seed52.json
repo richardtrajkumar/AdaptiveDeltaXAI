@@ -1,0 +1,27 @@
+{
+  "seed": 52,
+  "stream": "temperature",
+  "detector_n_raw_test_steps": 3456,
+  "detector_n_valid_windows": 3436,
+  "detector_n_positive_windows": 331,
+  "detector_auroc": 0.944356388438879,
+  "detector_auprc": 0.9063606404775968,
+  "detector_precision": 0.952054794520548,
+  "detector_recall": 0.8398791540785498,
+  "detector_f1": 0.8924558587479936,
+  "detector_confusion_matrix_tn_fp_fn_tp": [
+    3091,
+    14,
+    53,
+    278
+  ],
+  "operational_n_steps": 17235,
+  "operational_n_fresh_calls": 1398,
+  "operational_recompute_pct": 8.111401218450826,
+  "operational_amortized_step_latency_ms_mean": 4.867060705134849,
+  "operational_amortized_step_latency_ms_p95": 53.49781740003434,
+  "operational_fresh_call_latency_ms_mean": 59.325634083687746,
+  "operational_fresh_call_latency_ms_p95": 81.18714779996019,
+  "operational_fresh_completeness_residual_mean": 0.0002259006444877499,
+  "operational_fresh_completeness_residual_p95": 0.0011415547225624317
+}

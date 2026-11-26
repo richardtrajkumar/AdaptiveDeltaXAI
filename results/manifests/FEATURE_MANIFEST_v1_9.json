@@ -1,0 +1,67 @@
+{
+  "release": "AdaptiveDeltaXAI Master v1.9",
+  "lineage": {
+    "inherits": "Master v1.7 frozen T4 protocol",
+    "preserves_v1_7": true,
+    "purpose": "canonical temporal-index, SWING-history, cache-age, direct-delta-faithfulness, matched-policy, release, and Part-4 correction protocol"
+  },
+  "data_integrity": [
+    "48-hour controlled synthetic temperature and power telemetry",
+    "chronological 70/10/20 split",
+    "training-only normalization",
+    "within-split window/label assertions",
+    "public reconstruction labels align to the last reconstructed observation",
+    "synthetic next-observation target contract records endpoint_index=i-1 and target_index=i",
+    "unlabelled final controller target is retained only for operational timing and excluded from label-dependent metrics"
+  ],
+  "models": [
+    "three-seed GRU synthetic study",
+    "three-seed Transformer synthetic validation",
+    "ReconGRU with log1p reconstruction-MSE score for the documented public subset"
+  ],
+  "attribution": [
+    "full near/far multipath SWING",
+    "separate AW-IG and zero-IG baselines",
+    "KernelSHAP and LIME",
+    "fresh-only completeness",
+    "common-window AOPC",
+    "paired AOPC differences with confidence intervals",
+    "direct adjacent-window prediction-difference perturbation benchmark using real history",
+    "documented exact 26-observation Full-SWING history requirement (W + delta + lag); no unsupported external-output-parity claim"
+  ],
+  "adaptive_features": [
+    "I1 adaptive residual trigger",
+    "I2 EMA detrending",
+    "I3 input-drift and max-age invalidation",
+    "I4 display-only cached_event_context discount",
+    "I5 topology grouping",
+    "explicit score target index for refresh-event coverage",
+    "pre-decision and post-decision cache age fields; first cache hit is display age one",
+    "No-I1 is explicitly named the always-refresh reference rather than evidence of useful adaptive placement"
+  ],
+  "part_d_execution_gates": [
+    "Run public label-alignment regression tests before any affected public stage.",
+    "Use threshold-independent public metrics in the primary evaluation.",
+    "Retain calibrated threshold-dependent public metrics as supplementary evidence unless they are stable and consequential.",
+    "Do not expand beyond the documented three SMD units plus PSM without a new declared protocol."
+  ],
+  "scientific_gates": [
+    "No cache output is labelled a current prediction-change explanation.",
+    "Only raw fresh SWING maps receive completeness residuals.",
+    "Public alignment, exact matched policy budgets, and completeness gates must pass before freezing.",
+    "Offline score-change policy is labelled an offline oracle.",
+    "Timing artifacts require CUDA for the official release and record warm-ups, trials, and hardware provenance.",
+    "All manuscript tables and empirical figures are generated from frozen v1.9 output.",
+    "Synthetic adaptive, periodic, random, and offline-score-change controls use the adaptive refresh count within each seed.",
+    "Internal frozen-bundle verification is distinct from public archival availability; no public-release wording is permitted without a repository commit/archive identifier."
+  ],
+  "release_blocks": [
+    "public label-alignment test failure",
+    "public completeness failure",
+    "unmatched public policy budgets",
+    "missing synthetic three-seed metrics",
+    "missing paired AOPC or latency-tail output",
+    "non-CUDA official timing run",
+    "missing hashes, configuration, or consistency report"
+  ]
+}

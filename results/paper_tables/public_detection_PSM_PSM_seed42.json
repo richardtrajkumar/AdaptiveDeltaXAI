@@ -1,0 +1,15 @@
+{
+  "n_steps": 87821,
+  "n_positive": 24381,
+  "n_negative": 63440,
+  "positive_prevalence": 0.2776215256032156,
+  "auroc": 0.7706459128526736,
+  "auprc_average_precision": 0.570042517633524,
+  "auprc_lift_over_prevalence": 2.0533080653416067,
+  "dataset": "PSM",
+  "unit": "PSM",
+  "seed": 42,
+  "score_definition": "log1p_reconstruction_mse",
+  "label_alignment": "window_end_t_minus_1",
+  "threshold_source": "none_threshold_free_only"
+}

@@ -1,0 +1,62 @@
+{
+  "release": "AdaptiveDeltaXAI Master v1.9",
+  "seeds": [
+    42,
+    52,
+    62
+  ],
+  "split": {
+    "type": "chronological",
+    "train": 0.7,
+    "validation": 0.1,
+    "test": 0.2
+  },
+  "window": 20,
+  "swing_lag": 5,
+  "prediction_delta": 1,
+  "swing_history_observations": 26,
+  "synthetic_target_contract": "window_x_i_minus_W_to_i_minus_1_predicts_y_i; endpoint=i-1; target=i",
+  "controller_age_contract": "age_before=t-last_refresh is evaluated before refresh decision; cache hit increments to age_after before gamma^age_after display discount",
+  "swing_steps": 64,
+  "ig_steps": 64,
+  "epochs": 5,
+  "batch": 256,
+  "lr": 0.0005,
+  "weight_decay": 0.0001,
+  "faithfulness_windows": 50,
+  "latency_windows": 10,
+  "kernel_shap_samples": 100,
+  "bootstrap": 2000,
+  "timing": {
+    "warmups": 3,
+    "repetitions": 5,
+    "steps_per_trial": 100
+  },
+  "public": {
+    "smd_machines": 3,
+    "subset_windows": 50,
+    "seeds": [
+      42
+    ],
+    "score": "log1p_reconstruction_mse",
+    "label_alignment": "reconstruct_last_window_observation_t_minus_1",
+    "calibration_fraction": 0.2,
+    "calibration_quantile": 0.995,
+    "max_mean_completeness_residual": 0.05,
+    "max_p95_completeness_residual": 0.15
+  },
+  "temperature": {
+    "score_k": 2.5,
+    "ema_alpha": 0.05,
+    "drift_k": 5.0,
+    "gamma": 0.97,
+    "max_age": 60
+  },
+  "power": {
+    "score_k": 3.0,
+    "ema_alpha": 0.08,
+    "drift_k": 5.0,
+    "gamma": 0.95,
+    "max_age": 60
+  }
+}

@@ -1,0 +1,12 @@
+diff -ru '--exclude=__pycache__' a/scripts/core_v1_9.py b/scripts/core_v1_9.py
+--- a/scripts/core_v1_9.py
++++ b/scripts/core_v1_9.py
+@@ -256,7 +256,7 @@
+     rng=np.random.default_rng(seed); stale=[r for r in records if not r.refreshed]
+     rows=[]
+     for r in rng.choice(stale,min(n,len(stale)),replace=False):
+-        w=cfg['window']; lag=cfg['swing_lag']; hist=stream[r.t-(w+1+lag)+1:r.t+1]; fresh,_=fresh_swing(model,hist,cfg,device)
++        w=cfg['window']; lag=cfg['swing_lag']; history_length=2*w+1+lag; hist=stream[r.t-history_length+1:r.t+1]; fresh,_=fresh_swing(model,hist,cfg,device)
+         a=r.cached_event_context.ravel(); b=fresh.ravel(); k=min(10,len(a)); ta=set(np.argpartition(abs(a),-k)[-k:]); tb=set(np.argpartition(abs(b),-k)[-k:])
+         rows.append({"endpoint_index":r.t,"target_index":r.target_index,"cache_age_before":r.age_before,"cache_age_after":r.age_after,"cosine_similarity":float(a@b/(np.linalg.norm(a)*np.linalg.norm(b)+1e-12)),"top10_jaccard":len(ta&tb)/len(ta|tb),"l1_difference":float(abs(a-b).sum())})
+     return pd.DataFrame(rows)

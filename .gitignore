@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.pytest_cache/
+# large artifacts live in the Zenodo archive / GitHub Release, not in git
+*.zip
+*.pt
+*.npz
+results/*.zip
+# public datasets are downloaded by data/public/download_public_data.py
+data/public/SMD/
+data/public/PSM/

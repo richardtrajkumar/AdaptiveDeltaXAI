@@ -1,0 +1,11 @@
+diff -ru '--exclude=__pycache__' a/src/adaptive_deltaxai/__init__.py b/src/adaptive_deltaxai/__init__.py
+--- a/src/adaptive_deltaxai/__init__.py
++++ b/src/adaptive_deltaxai/__init__.py
+@@ -1,7 +1,6 @@
+ """Canonical v1.6 AdaptiveDeltaXAI implementation."""
+ 
+ from .swing import multipath_integrated_gradients, swing_attribution, linear_completeness_check
+-from .controller import AdaptiveSwingController, StepRecord, summarize
+ 
+ __all__ = ["multipath_integrated_gradients", "swing_attribution", "linear_completeness_check",
+            "AdaptiveSwingController", "StepRecord", "summarize"]

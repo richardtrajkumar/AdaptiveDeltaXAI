@@ -1,0 +1,17 @@
+{
+  "1_cached_context": "Cache hits are named cached_event_context; cache-fidelity is descriptive only and is never a current-change completeness claim.",
+  "2_swing_identity": "Independent structural-reference and linear-completeness tests are mandatory. External-reference parity is reported as unavailable unless a pinned official fixture is supplied.",
+  "3_completeness": "Only raw fresh SWING maps receive completeness residuals; I4 and cache reuse have no completeness claim.",
+  "4_ablation_latency": "ablation_summary.csv separates fresh-call and amortized latency across three seeds.",
+  "5_batching_vs_caching": "efficiency_2x2.csv contains repeated, warmed timing for all four batching x caching conditions.",
+  "6_faithfulness": "faithfulness_summary.csv uses a common held-out window set, common masking protocol, and bootstrap intervals; it does not imply a winner absent supporting intervals.",
+  "7_public_scope": "public_full_attribution_summary.csv exists only after each unit passes the completeness gate; public_policy_results.csv has exact matched budgets.",
+  "8_numeric_consistency": "CONSISTENCY_REPORT_v1_9.json is generated from the same stage artifacts as all paper tables and figures.",
+  "9_reproducibility": "run_manifest_v1_9.json records code-tree/data hashes, configuration, and hardware; checkpoints and per-stage output remain in the frozen bundle.",
+  "10_presentation": "PAPER_TABLES_v1_9.md and the generated figures are the sole empirical sources for the next manuscript revision; the release checklist requires visual PDF review.",
+  "11_public_alignment": "Public reconstruction labels use the final observation in each scored window, verified by regression tests and recorded as window_end_t_minus_1.",
+  "12_imbalance_and_events": "Synthetic three-seed thresholded metrics include MCC, balanced accuracy, specificity, false-alarm and event-detection measures.",
+  "13_refresh_coverage": "Refresh-event coverage uses explicit controller target_index values and separately reports normal-period refresh share.",
+  "14_tail_latency": "method_latency_tail_metrics.csv records median/P95/P99/max from measured T4 trials.",
+  "15_calibration_scope": "Primary public results are threshold-free; calibrated thresholded metrics are supplementary and use chronological non-test calibration."
+}

@@ -1,0 +1,70 @@
+{
+  "seed": 62,
+  "same_split_seed_controller": true,
+  "gru_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.9536309723620902,
+    "auprc": 0.9180434561764003,
+    "precision": 0.9537953795379538,
+    "recall": 0.8731117824773413,
+    "f1": 0.9116719242902208,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3091,
+      14,
+      42,
+      289
+    ]
+  },
+  "transformer_detector": {
+    "n_raw_test_steps": 3456,
+    "n_valid_windows": 3436,
+    "n_positive_windows": 331,
+    "auroc": 0.9600449523475927,
+    "auprc": 0.9233784543344625,
+    "precision": 0.8501440922190202,
+    "recall": 0.8912386706948641,
+    "f1": 0.8702064896755162,
+    "confusion_matrix_tn_fp_fn_tp": [
+      3053,
+      52,
+      36,
+      295
+    ]
+  },
+  "gru_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1395,
+    "recompute_pct": 8.093994778067884,
+    "amortized_step_latency_ms_mean": 5.260050145748647,
+    "amortized_step_latency_ms_p95": 57.954283699928055,
+    "fresh_call_latency_ms_mean": 64.27064630178488,
+    "fresh_call_latency_ms_p95": 87.95270619993971,
+    "fresh_completeness_residual_mean": 0.00023702739371072305,
+    "fresh_completeness_residual_p95": 0.0011057204334065317,
+    "refresh_reasons": {
+      "cached_event_context": 15840,
+      "score_residual_I1_I2": 1227,
+      "input_drift_or_age_I3": 167,
+      "initialization": 1
+    }
+  },
+  "transformer_operational": {
+    "n_steps": 17235,
+    "n_fresh_calls": 1263,
+    "recompute_pct": 7.328111401218451,
+    "amortized_step_latency_ms_mean": 3.144101180624801,
+    "amortized_step_latency_ms_p95": 37.99314370035062,
+    "fresh_call_latency_ms_mean": 42.129995690427954,
+    "fresh_call_latency_ms_p95": 56.389540100008155,
+    "fresh_completeness_residual_mean": 9.182546557341204e-05,
+    "fresh_completeness_residual_p95": 0.00033619444584473933,
+    "refresh_reasons": {
+      "cached_event_context": 15972,
+      "score_residual_I1_I2": 1106,
+      "input_drift_or_age_I3": 156,
+      "initialization": 1
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "n_steps": 3456,
+  "n_refreshes": 267,
+  "recompute_pct": 7.725694444444445,
+  "n_true_anomaly_events": 13,
+  "events_with_refresh_count": 12,
+  "event_refresh_coverage": 0.9230769230769231,
+  "mean_steps_to_first_refresh_detected_events": 3.5833333333333335,
+  "refresh_on_anomaly_step_pct_of_all_refreshes": 37.07865168539326,
+  "refresh_on_normal_step_pct_of_all_refreshes": 62.92134831460674,
+  "stream": "temperature",
+  "seed": 52,
+  "scope": "held_out_test",
+  "target_alignment": "synthetic_x_i_minus_w_to_i_minus_1_predicts_y_i"
+}

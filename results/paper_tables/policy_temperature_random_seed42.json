@@ -1,0 +1,18 @@
+{
+  "policy": "random",
+  "seed": 42,
+  "causal_online_policy": true,
+  "matched_refresh_count": 1391,
+  "n_steps": 17235,
+  "n_fresh_calls": 1391,
+  "recompute_pct": 8.07078619089063,
+  "amortized_step_latency_ms_mean": 5.5084461628662265,
+  "amortized_step_latency_ms_p95": 60.08197600008315,
+  "fresh_call_latency_ms_mean": 67.79481380805173,
+  "fresh_call_latency_ms_p95": 93.29522849998284,
+  "fresh_completeness_residual_mean": 5.363443093245381e-05,
+  "fresh_completeness_residual_p95": 0.0002076494274660945,
+  "refresh_reasons": {
+    "random_policy": 17235
+  }
+}
